@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>pure_pursuit_local_planner</name>
+  <version>0.1.0</version>
+  <description>A local planner implementing the Pure Pursuit algorithm.</description>
+  <maintainer email="topaloglutugcan@gmail.com">Tugcan</maintainer>
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>roscpp</depend>
+  <depend>nav_core</depend>
+  <depend>base_local_planner</depend>
+  <depend>geometry_msgs</depend>
+  <depend>costmap_2d</depend>
+  <depend>pluginlib</depend>
+  <depend>nav_msgs</depend>
+  <depend>tf2_ros</depend>
+  <depend>tf2_geometry_msgs</depend>
+  <depend>angles</depend>
+
+  <export>
+    <nav_core plugin="${prefix}/pure_pursuit_local_planner_plugin.xml" />
+  </export>
+</package>

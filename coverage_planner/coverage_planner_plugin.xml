@@ -1,0 +1,7 @@
+<library path="lib/libcoverage_planner_lib">
+  <class name="coverage_planner/CoveragePlanner" type="coverage_planner::CoveragePlanner" base_class_type="nav_core::BaseGlobalPlanner">
+    <description>
+      A full coverage path planner for a given polygon considering robot radius.
+    </description>
+  </class>
+</library>
