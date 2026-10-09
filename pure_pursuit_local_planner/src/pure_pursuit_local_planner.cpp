@@ -78,8 +78,7 @@ namespace pure_pursuit_local_planner
 
     bool PurePursuitLocalPlanner::computeVelocityCommands(geometry_msgs::Twist &cmd_vel)
     {
-        cmd_vel.linear.x = 0.0;
-        cmd_vel.angular.z = 0.0;
+        cmd_vel = geometry_msgs::Twist();
 
         if (!initialized_)
         {
@@ -226,11 +225,13 @@ namespace pure_pursuit_local_planner
             cmd_vel.linear.x = 0.0;
             cmd_vel.angular.z = 0.0;
             current_waypoint_idx_ = global_plan_.size();
+            return true;
         }
         else if (dist_to_final_goal < lookahead_distance_ * 1.5)
         {
             double speed_factor = dist_to_final_goal / (lookahead_distance_ * 1.5);
             cmd_vel.linear.x = linear_velocity_ * std::max(0.2, speed_factor);
+            cmd_vel.angular.z = std::max(-max_angular_velocity_, std::min(max_angular_velocity_, cmd_vel.linear.x * curvature));
         }
 
         if (getEuclideanDistance(robot_pose_global.pose.position, global_plan_[current_waypoint_idx_].pose.position) < lookahead_distance_ * 0.3 &&
