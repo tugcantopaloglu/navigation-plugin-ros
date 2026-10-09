@@ -8,7 +8,7 @@ ROS1 Catkin plugins developed for BLM6191 Robots, Assignment 4:
 
 The global planner accepts four points and sweeps their axis-aligned bounding rectangle in a zigzag pattern. It shrinks that rectangle by `robot_radius` and spaces sweeps by `2 * robot_radius * coverage_step_factor`. It prepends the supplied start pose and publishes a `nav_msgs/Path`.
 
-The local planner interpolates a lookahead point, transforms it into the robot frame, and computes curvature as `2 * y_error / L_actual^2`. It limits angular velocity, reduces speed near the final waypoint, and stops within the positional goal tolerance. Final orientation is not enforced.
+The local planner follows the Pure Pursuit algorithm described by R. Craig Coulter. It interpolates a lookahead point, transforms it into the robot frame, and computes curvature as `2 * y_error / L_actual^2`. It limits angular velocity, reduces speed near the final waypoint, and stops within the positional goal tolerance. Final orientation is not enforced.
 
 ## Build
 
